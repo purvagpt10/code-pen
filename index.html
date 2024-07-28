@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Code Editor </title>
+</head>
+<body>
+    <section class="container">
+        <h1>Code Editor</h1>
+         <div class="editor">
+          <div class="left">
+            <label><box-icon type='logo' name='html5'></box-icon>HTML</label>
+            <textarea  onkeyup="run()" spellcheck="false" id="html-code"></textarea>
+
+            <label><box-icon type='logo'  name='css3' ></box-icon>CSS</label>
+            <textarea onkeyup="run()" spellcheck="false" id="css-code"></textarea>
+
+            <label><box-icon  type='logo' name='javascript' ></box-icon>JavaScript</label>
+            <textarea onkeyup="run()" spellcheck="false" id="js-code"></textarea>
+
+          </div>
+          <div class="right">
+            <label ><box-icon name='play-circle' ></box-icon>Output</label>
+            <iframe id="output"></iframe>
+
+          </div>  
+         </div>
+    </section>
+
+    </section>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script> 
+   <script> 
+    function run() {
+    let htmlCode = document.getElementById("html-code").value;
+    let cssCode = "<style>" + document.getElementById("css-code").value + "</style>";
+    let jsCode = document.getElementById("js-code").value;
+    
+    let output = document.getElementById("output");
+    let documentContent = htmlCode + cssCode + "<script>(function(){" + jsCode + "})();<\/script>";
+
+    output.contentDocument.open();
+    output.contentDocument.write(documentContent);
+    output.contentDocument.close();
+}
+   </script>
+
+  
+  
+      
+</body>
+</html>
